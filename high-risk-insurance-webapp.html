@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureShield Insurance | Coverage for Every Risk</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --danger: #c0392b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-shield {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e67e22;
+        }
+        
+        /* Quote Form Section */
+        .quote-section {
+            padding: 60px 0;
+        }
+        
+        .quote-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quote-container h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tab-container {
+            margin-bottom: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .tab-button.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        .submit-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #219653;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 0;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-dot.active {
+            background-color: var(--primary);
+        }
+        
+        /* Why Choose Us */
+        .why-us {
+            padding: 60px 0;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .why-us .section-title {
+            color: white;
+        }
+        
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .why-us-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .why-us-icon {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-shield">🛡️</span>
+                SecureShield Insurance
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#quote">Get a Quote</a></li>
+                    <li><a href="#features">Coverage Options</a></li>
+                    <li><a href="#why-us">Why Choose Us</a></li>
+                    <li><a href="#" style="background: var(--secondary); padding: 8px 15px; border-radius: 5px;">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Insurance for Everyone, Regardless of History</h1>
+            <p>Specializing in high-risk auto and property coverage when other companies say no. Get protected today with rates you can afford.</p>
+            <a href="#quote" class="cta-button">Get Your Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section id="quote" class="quote-section">
+        <div class="container">
+            <div class="quote-container">
+                <h2>Get Your Free Quote in Minutes</h2>
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button class="tab-button active" data-tab="auto">Auto Insurance</button>
+                        <button class="tab-button" data-tab="property">Property Insurance</button>
+                    </div>
+                    
+                    <!-- Auto Insurance Form -->
+                    <div id="auto-tab" class="tab-content active">
+                        <form id="auto-quote-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="auto-zip">ZIP Code</label>
+                                    <input type="text" id="auto-zip" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="auto-drivers">Number of Drivers</label>
+                                    <select id="auto-drivers" class="form-control" required>
+                                        <option value="">Select</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="auto-vehicles">Number of Vehicles</label>
+                                    <select id="auto-vehicles" class="form-control" required>
+                                        <option value="">Select</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4+</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="auto-incidents">Accidents or Violations in Last 3 Years</label>
+                                    <select id="auto-incidents" class="form-control" required>
+                                        <option value="">Select</option>
+                                        <option value="0">None</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="credit-history">Credit History</label>
+                                <select id="credit-history" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                    <option value="no-score">No Credit Score</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Get My Quote</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Property Insurance Form -->
+                    <div id="property-tab" class="tab-content">
+                        <form id="property-quote-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="property-zip">ZIP Code</label>
+                                    <input type="text" id="property-zip" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="property-type">Property Type</label>
+                                    <select id="property-type" class="form-control" required>
+                                        <option value="">Select</option>
+                                        <option value="single-family">Single Family Home</option>
+                                        <option value="multi-family">Multi-Family Home</option>
+                                        <option value="condo">Condominium</option>
+                                        <option value="mobile">Mobile Home</option>
+                                        <option value="apartment">Apartment</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="property-value">Estimated Property Value</label>
+                                    <select id="property-value" class="form-control" required>
+                                        <option value="">Select</option>
+                                        <option value="under100k">Under $100,000</option>
+                                        <option value="100k-250k">$100,000 - $250,000</option>
+                                        <option value="250k-500k">$250,000 - $500,000</option>
+                                        <option value="500k-750k">$500,000 - $750,000</option>
+                                        <option value="over750k">Over $750,000</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="property-claims">Claims in Last 5 Years</label>
+                                    <select id="property-claims" class="form-control" required>
+                                        <option value="">Select</option>
+                                        <option value="0">None</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="property-credit">Credit History</label>
+                                <select id="property-credit" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                    <option value="no-score">No Credit Score</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Get My Quote</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Coverage Options for Every Need</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>High-Risk Auto</h3>
+                    <p>Coverage for drivers with accidents, tickets, DUIs, or SR-22 requirements. We believe everyone deserves protection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Property Insurance</h3>
+                    <p>Protection for homes in high-risk areas, older properties, or properties with previous claims history.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Commercial Coverage</h3>
+                    <p>Business insurance solutions for companies that have been denied coverage by standard carriers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Flexible Payment Plans</h3>
+                    <p>Choose from monthly, quarterly, or annual payment options with low down payments to fit your budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <p class="testimonial-text">"After my second accident, no one would insure me except SecureShield. Their rates were reasonable and the process was easy. Now I'm back on the road with confidence!"</p>
+                    <p class="testimonial-author">- Michael R., Customer since 2023</p>
+                </div>
+                <div class="testimonial-nav">
+                    <span class="nav-dot active"></span>
+                    <span class="nav-dot"></span>
+                    <span class="nav-dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose SecureShield Insurance</h2>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <div class="why-us-icon">✓</div>
+                    <div>
+                        <h3>Specialized in High-Risk Coverage</h3>
+                        <p>We focus on providing insurance solutions for those who have been denied elsewhere.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">✓</div>
+                    <div>
+                        <h3>Instant Quotes Online</h3>
+                        <p>Get a competitive quote in minutes without lengthy phone calls or office visits.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">✓</div>
+                    <div>
+                        <h3>24/7 Claims Support</h3>
+                        <p>Our claims team is available around the clock to help when you need it most.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">✓</div>
+                    <div>
+                        <h3>Path to Better Rates</h3>
+                        <p>Our loyalty program helps you improve your rating and reduce premiums over time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>SecureShield Insurance</h3>
+                    <p>Providing insurance solutions for high-risk individuals and properties since 2015.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Insurance Products</h3>
+                    <ul>
+                        <li><a href="#">Auto Insurance</a></li>
+                        <li><a href="#">Home Insurance</a></li>
+                        <li><a href="#">Renters Insurance</a></li>
+                        <li><a href="#">Commercial Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Insurance Blog</a></li>
+                        <li><a href="#">Policy Documents</a></li>
+                        <li><a href="#">Claims Process</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#">1-800-SECURE-NOW</a></li>
+                        <li><a href="#">support@secureshield.com</a></li>
+                        <li><a href="#">Find an Agent</a></li>
+                        <li><a href="#">Request a Callback</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SecureShield Insurance. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.getElementById('nav-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Tab Switching
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and tabs
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to current button and tab
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Form Submission (placeholder functionality)
+            const autoForm = document.getElementById('auto-quote-form');
+            const propertyForm = document.getElementById('property-quote-form');
+            
+            autoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for submitting your information! An agent will contact you shortly with your personalized quote.');
+            });
+            
+            propertyForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for submitting your information! An agent will contact you shortly with your personalized property insurance quote.');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
